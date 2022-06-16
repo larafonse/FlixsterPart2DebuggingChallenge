@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         rvMovies = findViewById(R.id.rvMovies)
         val movieAdapter = MovieAdapter(this, movies)
         rvMovies.adapter = movieAdapter
@@ -41,7 +42,6 @@ class MainActivity : AppCompatActivity() {
                 try{
                     val movieJsonArray = json.jsonObject.getJSONArray("results")
                     movies.addAll(Movie.fromJsonArray(movieJsonArray))
-                    movieAdapter.notifyDataSetChanged()
                     Log.i(TAG,"Movies : $movies")
                 } catch (e:JSONException){
                     Log.e(TAG, "Encountered Exception : $e")
